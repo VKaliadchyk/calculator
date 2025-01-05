@@ -1,4 +1,4 @@
-package com.vk.app.calculator.ui.feature.calculator.simple.mvi
+package com.vk.app.calculator.ui.feature.calculator.simple.mvi.model
 
 import com.vk.app.calculator.ui.base.UiEvent
 
@@ -23,4 +23,22 @@ sealed class SimpleCalculatorScreenUiEvent : UiEvent {
     data object KeyEightPress : SimpleCalculatorScreenUiEvent()
 
     data object KeyNinePress : SimpleCalculatorScreenUiEvent()
+
+    data object KeyClearPress : SimpleCalculatorScreenUiEvent()
+
+    data object KeyDelPress : SimpleCalculatorScreenUiEvent()
+
+    data object KeyPercentPress : SimpleCalculatorScreenUiEvent()
+
+    data object KeyDividePress : SimpleCalculatorScreenUiEvent()
+
+    data object KeyMultiplyPress : SimpleCalculatorScreenUiEvent()
+
+    data object KeySubtractPress : SimpleCalculatorScreenUiEvent()
+
+    data object KeyAddPress : SimpleCalculatorScreenUiEvent()
+
+    data object KeyEqualsPress : SimpleCalculatorScreenUiEvent()
+
+    data object KeyDotPress : SimpleCalculatorScreenUiEvent()
 }
