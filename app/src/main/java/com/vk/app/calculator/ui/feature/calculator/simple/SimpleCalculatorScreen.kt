@@ -1,22 +1,44 @@
 package com.vk.app.calculator.ui.feature.calculator.simple
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.vk.app.calculator.R
 import com.vk.app.calculator.ui.components.KeyboardButton
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.*
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyAddPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyClearPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyDelPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyDividePress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyDotPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyEightPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyEqualsPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyFivePress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyFourPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyMultiplyPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyNinePress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyOnePress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyPercentPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeySevenPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeySixPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeySubtractPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyThreePress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyTwoPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyZeroPress
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiState
 import com.vk.app.calculator.ui.theme.CalculatorTheme
 
@@ -26,17 +48,28 @@ fun SimpleCalculatorScreen(
     uiState: SimpleCalculatorScreenUiState,
     uiEvent: (SimpleCalculatorScreenUiEvent) -> Unit
 ) {
-    Column(modifier = modifier) {
-        Box(contentAlignment = Alignment.Center, modifier = Modifier.weight(0.75f)) {
-            //TODO input\output screen placeholder
-            Text(uiState.output)
+    Column(modifier = modifier.padding(horizontal = 16.dp)) {
+        Column (
+            horizontalAlignment = Alignment.End,
+            verticalArrangement = Arrangement.Bottom,
+            modifier = Modifier
+                .weight(0.75f)
+                .fillMaxWidth()
+                .padding(vertical = 8.dp)
+        ) {
+            Text(text = uiState.equation, fontSize = 36.sp)
+            Spacer(Modifier.height(12.dp))
+            Text(text = uiState.result, fontSize = 28.sp, color = Color.Black.copy(alpha = 0.60f))
         }
         HorizontalDivider()
-        Column(verticalArrangement = Arrangement.SpaceAround, modifier = Modifier.weight(1f)) {
+        Column(
+            verticalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.weight(1f).padding(vertical = 8.dp),
+        ) {
             val buttonSize: Dp = 74.dp
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 //TODO change vectors for all buttons
                 KeyboardButton(
@@ -66,7 +99,7 @@ fun SimpleCalculatorScreen(
             }
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 //TODO change vectors for all buttons
                 KeyboardButton(
@@ -96,7 +129,7 @@ fun SimpleCalculatorScreen(
             }
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 //TODO change vectors for all buttons
                 KeyboardButton(
@@ -126,7 +159,7 @@ fun SimpleCalculatorScreen(
             }
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 //TODO change vectors for all buttons
                 KeyboardButton(
@@ -156,7 +189,7 @@ fun SimpleCalculatorScreen(
             }
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 //TODO change vectors for all buttons
                 KeyboardButton(
@@ -193,7 +226,10 @@ fun SimpleCalculatorScreen(
 fun SimpleCalculatorScreenPreview() {
     CalculatorTheme {
         SimpleCalculatorScreen(
-            uiState = SimpleCalculatorScreenUiState.defaultValue,
+            uiState = SimpleCalculatorScreenUiState.defaultValue.copy(
+                equation = "0 + 5",
+                result = "= 5"
+            ),
             uiEvent = { }
         )
     }
