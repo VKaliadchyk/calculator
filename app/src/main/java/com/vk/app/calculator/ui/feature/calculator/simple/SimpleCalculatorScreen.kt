@@ -18,27 +18,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vk.app.calculator.R
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.*
 import com.vk.app.calculator.ui.components.KeyboardButton
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyAddPress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyClearPress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyDelPress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyDividePress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyDotPress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyEightPress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyEqualsPress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyFivePress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyFourPress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyMultiplyPress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyNinePress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyOnePress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyPercentPress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeySevenPress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeySixPress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeySubtractPress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyThreePress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyTwoPress
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyZeroPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.*
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiState
 import com.vk.app.calculator.ui.theme.CalculatorTheme
 
@@ -76,25 +59,25 @@ fun SimpleCalculatorScreen(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "AC key",
-                    onClick = { uiEvent(KeyClearPress) }
+                    onClick = { uiEvent(KeypadKeyPress(Clear)) }
                 )
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "DEL key",
-                    onClick = { uiEvent(KeyDelPress) }
+                    onClick = { uiEvent(KeypadKeyPress(Del)) }
                 )
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "% key",
-                    onClick = { uiEvent(KeyPercentPress) }
+                    onClick = { uiEvent(KeypadKeyPress(Percent)) }
                 )
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "/ key",
-                    onClick = { uiEvent(KeyDividePress) }
+                    onClick = { uiEvent(KeypadKeyPress(Divide)) }
                 )
             }
             Row(
@@ -106,25 +89,25 @@ fun SimpleCalculatorScreen(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "7 key",
-                    onClick = { uiEvent(KeySevenPress) }
+                    onClick = { uiEvent(KeypadKeyPress(Seven)) }
                 )
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "8 key",
-                    onClick = { uiEvent(KeyEightPress) }
+                    onClick = { uiEvent(KeypadKeyPress(Eight)) }
                 )
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "9 key",
-                    onClick = { uiEvent(KeyNinePress) }
+                    onClick = { uiEvent(KeypadKeyPress(Nine)) }
                 )
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "* key",
-                    onClick = { uiEvent(KeyMultiplyPress) }
+                    onClick = { uiEvent(KeypadKeyPress(Multiply)) }
                 )
             }
             Row(
@@ -136,25 +119,25 @@ fun SimpleCalculatorScreen(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "4 key",
-                    onClick = { uiEvent(KeyFourPress) }
+                    onClick = { uiEvent(KeypadKeyPress(Four)) }
                 )
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "5 key",
-                    onClick = { uiEvent(KeyFivePress) }
+                    onClick = { uiEvent(KeypadKeyPress(Five)) }
                 )
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "6 key",
-                    onClick = { uiEvent(KeySixPress) }
+                    onClick = { uiEvent(KeypadKeyPress(Six)) }
                 )
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "- key",
-                    onClick = { uiEvent(KeySubtractPress) }
+                    onClick = { uiEvent(KeypadKeyPress(Subtract)) }
                 )
             }
             Row(
@@ -166,25 +149,25 @@ fun SimpleCalculatorScreen(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "1 key",
-                    onClick = { uiEvent(KeyOnePress) }
+                    onClick = { uiEvent(KeypadKeyPress(One)) }
                 )
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "2 key",
-                    onClick = { uiEvent(KeyTwoPress) }
+                    onClick = { uiEvent(KeypadKeyPress(Two)) }
                 )
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "3 key",
-                    onClick = { uiEvent(KeyThreePress) }
+                    onClick = { uiEvent(KeypadKeyPress(Three)) }
                 )
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "+ key",
-                    onClick = { uiEvent(KeyAddPress) }
+                    onClick = { uiEvent(KeypadKeyPress(Add)) }
                 )
             }
             Row(
@@ -202,19 +185,19 @@ fun SimpleCalculatorScreen(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "0 key",
-                    onClick = { uiEvent(KeyZeroPress) }
+                    onClick = { uiEvent(KeypadKeyPress(Zero)) }
                 )
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = ". key",
-                    onClick = { uiEvent(KeyDotPress) }
+                    onClick = { uiEvent(KeypadKeyPress(Dot)) }
                 )
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
                     contentDescription = "= key",
-                    onClick = { uiEvent(KeyEqualsPress) }
+                    onClick = { uiEvent(KeypadKeyPress(Equals)) }
                 )
             }
         }

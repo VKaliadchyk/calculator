@@ -2,6 +2,7 @@ package com.vk.app.calculator.ui.feature.calculator.simple.mvi
 
 import com.vk.app.calculator.ui.base.BaseReducer
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenReducerEvent
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenReducerEvent.*
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiState
 
 class SimpleCalculatorScreenReducer(initialVal: SimpleCalculatorScreenUiState) :
@@ -11,6 +12,16 @@ class SimpleCalculatorScreenReducer(initialVal: SimpleCalculatorScreenUiState) :
         oldState: SimpleCalculatorScreenUiState,
         event: SimpleCalculatorScreenReducerEvent
     ) {
-        TODO("Not yet implemented")
+        val newState = when (event) {
+            is UpdateOutput -> {
+                oldState.copy(
+                    equation = event.output.input,
+                    result = event.output.result
+                )
+            }
+        }
+
+        println("-== state: $newState")
+        setState(newState)
     }
 }
