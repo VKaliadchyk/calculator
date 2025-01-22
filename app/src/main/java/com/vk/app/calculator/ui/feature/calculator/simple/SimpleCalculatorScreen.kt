@@ -54,27 +54,26 @@ fun SimpleCalculatorScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                //TODO change vectors for all buttons
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_ac,
                     size = buttonSize,
                     contentDescription = "AC key",
                     onClick = { uiEvent(KeypadKeyPress(Clear)) }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_del,
                     size = buttonSize,
                     contentDescription = "DEL key",
                     onClick = { uiEvent(KeypadKeyPress(Del)) }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_percent,
                     size = buttonSize,
                     contentDescription = "% key",
                     onClick = { uiEvent(KeypadKeyPress(Percent)) }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_divide,
                     size = buttonSize,
                     contentDescription = "/ key",
                     onClick = { uiEvent(KeypadKeyPress(Divide)) }
@@ -84,27 +83,26 @@ fun SimpleCalculatorScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                //TODO change vectors for all buttons
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_seven,
                     size = buttonSize,
                     contentDescription = "7 key",
                     onClick = { uiEvent(KeypadKeyPress(Seven)) }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_eight,
                     size = buttonSize,
                     contentDescription = "8 key",
                     onClick = { uiEvent(KeypadKeyPress(Eight)) }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_nine,
                     size = buttonSize,
                     contentDescription = "9 key",
                     onClick = { uiEvent(KeypadKeyPress(Nine)) }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_multiply,
                     size = buttonSize,
                     contentDescription = "* key",
                     onClick = { uiEvent(KeypadKeyPress(Multiply)) }
@@ -114,27 +112,26 @@ fun SimpleCalculatorScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                //TODO change vectors for all buttons
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_four,
                     size = buttonSize,
                     contentDescription = "4 key",
                     onClick = { uiEvent(KeypadKeyPress(Four)) }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_five,
                     size = buttonSize,
                     contentDescription = "5 key",
                     onClick = { uiEvent(KeypadKeyPress(Five)) }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_six,
                     size = buttonSize,
                     contentDescription = "6 key",
                     onClick = { uiEvent(KeypadKeyPress(Six)) }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_subtract,
                     size = buttonSize,
                     contentDescription = "- key",
                     onClick = { uiEvent(KeypadKeyPress(Subtract)) }
@@ -144,27 +141,26 @@ fun SimpleCalculatorScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                //TODO change vectors for all buttons
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_one,
                     size = buttonSize,
                     contentDescription = "1 key",
                     onClick = { uiEvent(KeypadKeyPress(One)) }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_two,
                     size = buttonSize,
                     contentDescription = "2 key",
                     onClick = { uiEvent(KeypadKeyPress(Two)) }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_three,
                     size = buttonSize,
                     contentDescription = "3 key",
                     onClick = { uiEvent(KeypadKeyPress(Three)) }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_add,
                     size = buttonSize,
                     contentDescription = "+ key",
                     onClick = { uiEvent(KeypadKeyPress(Add)) }
@@ -174,7 +170,6 @@ fun SimpleCalculatorScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                //TODO change vectors for all buttons
                 KeyboardButton(
                     vectorId = R.drawable.test_inner_24,
                     size = buttonSize,
@@ -182,19 +177,19 @@ fun SimpleCalculatorScreen(
                     onClick = { /* TODO Implement */ }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_zero,
                     size = buttonSize,
                     contentDescription = "0 key",
                     onClick = { uiEvent(KeypadKeyPress(Zero)) }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_dot,
                     size = buttonSize,
                     contentDescription = ". key",
                     onClick = { uiEvent(KeypadKeyPress(Dot)) }
                 )
                 KeyboardButton(
-                    vectorId = R.drawable.test_inner_24,
+                    vectorId = R.drawable.keypad_equals,
                     size = buttonSize,
                     contentDescription = "= key",
                     onClick = { uiEvent(KeypadKeyPress(Equals)) }
