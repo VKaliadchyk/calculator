@@ -6,9 +6,9 @@ class OutputFormatterImpl : OutputFormatter {
         val hasFraction = output % 1 != 0.0
 
         return if (hasFraction) {
-            output.toString()
+            "= $output"
         } else {
-            output.toLong().toString()
+            "= ${output.toLong()}"
         }
     }
 }
