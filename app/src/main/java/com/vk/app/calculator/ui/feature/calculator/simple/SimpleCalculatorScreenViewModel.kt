@@ -1,13 +1,11 @@
 package com.vk.app.calculator.ui.feature.calculator.simple
 
 import com.vk.app.calculator.logic.calculator.simple.SimpleCalculator
-import com.vk.app.calculator.ui.base.BaseReducer
 import com.vk.app.calculator.ui.base.BaseViewModel
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.SimpleCalculatorScreenReducer
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenReducerEvent
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenReducerEvent.*
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeypadKeyPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyPress
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.StateFlow
@@ -24,7 +22,7 @@ class SimpleCalculatorScreenViewModel @Inject constructor(
 
     override fun handleUiEvent(uiEvent: SimpleCalculatorScreenUiEvent) {
         when (uiEvent) {
-            is KeypadKeyPress -> {
+            is KeyPress -> {
                 val calculationResult = calculator.processInput(uiEvent.key)
                 reducer.handleEvent(UpdateOutput(calculationResult))
             }

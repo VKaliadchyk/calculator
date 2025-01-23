@@ -2,8 +2,9 @@ package com.vk.app.calculator.ui.feature.calculator.simple
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -14,14 +15,32 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vk.app.calculator.R
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.*
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Add
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Clear
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Del
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Divide
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Dot
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Eight
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Equals
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Five
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Four
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Multiply
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Nine
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.One
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Percent
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Seven
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Six
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Subtract
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Three
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Two
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Zero
+import com.vk.app.calculator.ui.components.HorizontalSpacer
 import com.vk.app.calculator.ui.components.KeyboardButton
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.*
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyPress
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiState
 import com.vk.app.calculator.ui.theme.CalculatorTheme
 
@@ -32,7 +51,7 @@ fun SimpleCalculatorScreen(
     uiEvent: (SimpleCalculatorScreenUiEvent) -> Unit
 ) {
     Column(modifier = modifier.padding(horizontal = 16.dp)) {
-        Column (
+        Column(
             horizontalAlignment = Alignment.End,
             verticalArrangement = Arrangement.Bottom,
             modifier = Modifier
@@ -41,161 +60,214 @@ fun SimpleCalculatorScreen(
                 .padding(vertical = 8.dp)
         ) {
             Text(text = uiState.equation, fontSize = 36.sp)
-            Spacer(Modifier.height(12.dp))
+            HorizontalSpacer(height = 12.dp)
             Text(text = uiState.result, fontSize = 28.sp, color = Color.Black.copy(alpha = 0.60f))
         }
         HorizontalDivider()
+        HorizontalSpacer(height = 8.dp)
+
+        val buttonPadding = 40.dp
         Column(
             verticalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.weight(1f).padding(vertical = 8.dp),
+            modifier = Modifier.weight(1f)
         ) {
-            val buttonSize: Dp = 74.dp
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.spacedBy(buttonPadding),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Min)
             ) {
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_ac,
-                    size = buttonSize,
                     contentDescription = "AC key",
-                    onClick = { uiEvent(KeypadKeyPress(Clear)) }
+                    onClick = { uiEvent(KeyPress(Clear)) }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_del,
-                    size = buttonSize,
                     contentDescription = "DEL key",
-                    onClick = { uiEvent(KeypadKeyPress(Del)) }
+                    onClick = { uiEvent(KeyPress(Del)) }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_percent,
-                    size = buttonSize,
                     contentDescription = "% key",
-                    onClick = { uiEvent(KeypadKeyPress(Percent)) }
+                    onClick = { uiEvent(KeyPress(Percent)) }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_divide,
-                    size = buttonSize,
                     contentDescription = "/ key",
-                    onClick = { uiEvent(KeypadKeyPress(Divide)) }
+                    onClick = { uiEvent(KeyPress(Divide)) }
                 )
             }
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.spacedBy(buttonPadding),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Min)
             ) {
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_seven,
-                    size = buttonSize,
                     contentDescription = "7 key",
-                    onClick = { uiEvent(KeypadKeyPress(Seven)) }
+                    onClick = { uiEvent(KeyPress(Seven)) }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_eight,
-                    size = buttonSize,
                     contentDescription = "8 key",
-                    onClick = { uiEvent(KeypadKeyPress(Eight)) }
+                    onClick = { uiEvent(KeyPress(Eight)) }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_nine,
-                    size = buttonSize,
                     contentDescription = "9 key",
-                    onClick = { uiEvent(KeypadKeyPress(Nine)) }
+                    onClick = { uiEvent(KeyPress(Nine)) }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_multiply,
-                    size = buttonSize,
                     contentDescription = "* key",
-                    onClick = { uiEvent(KeypadKeyPress(Multiply)) }
+                    onClick = { uiEvent(KeyPress(Multiply)) }
                 )
             }
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.spacedBy(buttonPadding),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Min)
             ) {
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_four,
-                    size = buttonSize,
                     contentDescription = "4 key",
-                    onClick = { uiEvent(KeypadKeyPress(Four)) }
+                    onClick = { uiEvent(KeyPress(Four)) }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_five,
-                    size = buttonSize,
                     contentDescription = "5 key",
-                    onClick = { uiEvent(KeypadKeyPress(Five)) }
+                    onClick = { uiEvent(KeyPress(Five)) }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_six,
-                    size = buttonSize,
                     contentDescription = "6 key",
-                    onClick = { uiEvent(KeypadKeyPress(Six)) }
+                    onClick = { uiEvent(KeyPress(Six)) }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_subtract,
-                    size = buttonSize,
                     contentDescription = "- key",
-                    onClick = { uiEvent(KeypadKeyPress(Subtract)) }
+                    onClick = { uiEvent(KeyPress(Subtract)) }
                 )
             }
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.spacedBy(buttonPadding),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Min)
             ) {
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_one,
-                    size = buttonSize,
                     contentDescription = "1 key",
-                    onClick = { uiEvent(KeypadKeyPress(One)) }
+                    onClick = { uiEvent(KeyPress(One)) }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_two,
-                    size = buttonSize,
                     contentDescription = "2 key",
-                    onClick = { uiEvent(KeypadKeyPress(Two)) }
+                    onClick = { uiEvent(KeyPress(Two)) }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_three,
-                    size = buttonSize,
                     contentDescription = "3 key",
-                    onClick = { uiEvent(KeypadKeyPress(Three)) }
+                    onClick = { uiEvent(KeyPress(Three)) }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_add,
-                    size = buttonSize,
                     contentDescription = "+ key",
-                    onClick = { uiEvent(KeypadKeyPress(Add)) }
+                    onClick = { uiEvent(KeyPress(Add)) }
                 )
             }
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.spacedBy(buttonPadding),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Min)
             ) {
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.test_inner_24,
-                    size = buttonSize,
                     contentDescription = "Unused key",
-                    onClick = { /* TODO Implement */ }
+                    onClick = {  /*TODO Implement*/  }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_zero,
-                    size = buttonSize,
                     contentDescription = "0 key",
-                    onClick = { uiEvent(KeypadKeyPress(Zero)) }
+                    onClick = { uiEvent(KeyPress(Zero)) }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_dot,
-                    size = buttonSize,
                     contentDescription = ". key",
-                    onClick = { uiEvent(KeypadKeyPress(Dot)) }
+                    onClick = { uiEvent(KeyPress(Dot)) }
                 )
                 KeyboardButton(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     vectorId = R.drawable.keypad_equals,
-                    size = buttonSize,
                     contentDescription = "= key",
-                    onClick = { uiEvent(KeypadKeyPress(Equals)) }
+                    onClick = { uiEvent(KeyPress(Equals)) }
                 )
             }
         }
+        HorizontalSpacer(height = 32.dp)
     }
 }
 
