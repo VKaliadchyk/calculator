@@ -18,7 +18,7 @@ class OutputFormatterImplTests {
         val result = formatter.formatOutput(rawOutput)
 
         //THEN:
-        assertEquals("= 24.5", result)
+        assertEquals("24.5", result)
     }
 
     @Test
@@ -30,6 +30,6 @@ class OutputFormatterImplTests {
         val result = formatter.formatOutput(rawOutput)
 
         //THEN:
-        assertEquals("= 24", result)
+        assertEquals("24", result)
     }
 }

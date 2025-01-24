@@ -15,24 +15,34 @@ class SimpleCalculatorImpl(
     private val formatter: OutputFormatter
 ) : SimpleCalculator {
 
-    override var inputString: String = EMPTY_STRING
 
     override fun processInput(input: SimpleCalculatorKey): Output {
-        inputString = expressionBuilder.appendKey(input)
-
-        if (validator.isValid(inputString)) {
-            val expressionResult = calculatorCore.evaluate(inputString)
-            val formattedResult = formatter.formatOutput(expressionResult)
-            return Output(
-                input = inputString,
-                result = formattedResult
-            )
+        if (input != SimpleCalculatorKey.Equals) {
+            val expression = expressionBuilder.appendKey(input)
+            if (validator.isValid(expression)) {
+                val rawResult = calculatorCore.evaluate(expression)
+                val formattedResult = formatter.formatOutput(rawResult)
+                return Output(
+                    input = expressionBuilder.expressionString,
+                    result = "= $formattedResult"
+                )
+            }
         } else {
-            return Output(
-                input = inputString,
-                result = EMPTY_STRING
-            )
+            val expression = expressionBuilder.expressionString
+            if (validator.isValid(expression)) {
+                val rawResult = calculatorCore.evaluate(expression)
+                val formattedResult = formatter.formatOutput(rawResult)
+                expressionBuilder.expressionString = formattedResult
+                return Output(
+                    input = expressionBuilder.expressionString,
+                    result = "= $formattedResult"
+                )
+            }
         }
 
+        return Output(
+            input = expressionBuilder.expressionString,
+            result = EMPTY_STRING
+        )
     }
 }

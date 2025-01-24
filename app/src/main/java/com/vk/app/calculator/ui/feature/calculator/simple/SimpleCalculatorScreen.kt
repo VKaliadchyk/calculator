@@ -66,7 +66,7 @@ fun SimpleCalculatorScreen(
         HorizontalDivider()
         HorizontalSpacer(height = 8.dp)
 
-        val buttonPadding = 40.dp
+        val buttonPadding = 48.dp
         Column(
             verticalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.weight(1f)
