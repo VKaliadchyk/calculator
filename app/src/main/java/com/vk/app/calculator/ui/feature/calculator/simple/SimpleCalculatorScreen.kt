@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -59,9 +61,22 @@ fun SimpleCalculatorScreen(
                 .fillMaxWidth()
                 .padding(vertical = 8.dp)
         ) {
+            LazyColumn(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                items(items = uiState.history) { item ->
+                    Text(text = item)
+                }
+            }
+            HorizontalSpacer(height = 28.dp)
             Text(text = uiState.equation, fontSize = 36.sp)
             HorizontalSpacer(height = 12.dp)
-            Text(text = uiState.result, fontSize = 28.sp, color = Color.Black.copy(alpha = 0.60f))
+            Row(horizontalArrangement = Arrangement.spacedBy(2.dp)) {
+                val resultFontSize = 28.sp
+                val resultFontColor = Color.Black.copy(alpha = 0.60f)
+                if (uiState.result.isNotEmpty()) {
+                    Text(text = "=", fontSize = resultFontSize, color = resultFontColor)
+                }
+                Text(text = uiState.result, fontSize = resultFontSize, color = resultFontColor)
+            }
         }
         HorizontalDivider()
         HorizontalSpacer(height = 8.dp)
@@ -278,7 +293,13 @@ fun SimpleCalculatorScreenPreview() {
         SimpleCalculatorScreen(
             uiState = SimpleCalculatorScreenUiState.defaultValue.copy(
                 equation = "0 + 5",
-                result = "= 5"
+                result = "5",
+                history = listOf(
+                    "2+2=4",
+                    "7+8=15",
+                    "1*20=20",
+                    "4*16=64"
+                )
             ),
             uiEvent = { }
         )

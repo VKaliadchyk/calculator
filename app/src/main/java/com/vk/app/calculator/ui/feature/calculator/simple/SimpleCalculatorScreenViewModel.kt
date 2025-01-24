@@ -1,6 +1,7 @@
 package com.vk.app.calculator.ui.feature.calculator.simple
 
 import com.vk.app.calculator.logic.calculator.simple.SimpleCalculator
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey
 import com.vk.app.calculator.ui.base.BaseViewModel
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.SimpleCalculatorScreenReducer
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenReducerEvent.*
@@ -24,7 +25,12 @@ class SimpleCalculatorScreenViewModel @Inject constructor(
         when (uiEvent) {
             is KeyPress -> {
                 val calculationResult = calculator.processInput(uiEvent.key)
-                reducer.handleEvent(UpdateOutput(calculationResult))
+                val reducerEvent = if (uiEvent.key == SimpleCalculatorKey.Equals && calculationResult.result.isNotEmpty()) {
+                        FinalizeCalculation(calculationResult)
+                    } else {
+                        OutputUpdate(calculationResult)
+                    }
+                reducer.handleEvent(reducerEvent)
             }
         }
     }

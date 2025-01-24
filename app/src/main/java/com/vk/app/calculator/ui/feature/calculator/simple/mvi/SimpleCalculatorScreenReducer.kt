@@ -13,15 +13,29 @@ class SimpleCalculatorScreenReducer(initialVal: SimpleCalculatorScreenUiState) :
         event: SimpleCalculatorScreenReducerEvent
     ) {
         val newState = when (event) {
-            is UpdateOutput -> {
+            is OutputUpdate -> {
                 oldState.copy(
                     equation = event.output.input,
                     result = event.output.result
                 )
             }
+            is FinalizeCalculation -> {
+                val historyEntry = "${oldState.equation}=${oldState.result}"
+                val history = oldState.history.toMutableList()
+                if (history.size >= HISTORY_ENTRY_LIMIT) history.removeAt(0)
+                history.add(historyEntry)
+                oldState.copy(
+                    equation = event.output.input,
+                    result = event.output.result,
+                    history = history
+                )
+            }
         }
 
-        println("-== state: $newState")
         setState(newState)
+    }
+
+    companion object {
+        private const val HISTORY_ENTRY_LIMIT = 3
     }
 }

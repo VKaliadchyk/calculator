@@ -15,7 +15,7 @@ class SimpleCalculatorImpl(
     private val formatter: OutputFormatter
 ) : SimpleCalculator {
 
-
+    //TODO refactor
     override fun processInput(input: SimpleCalculatorKey): Output {
         if (input != SimpleCalculatorKey.Equals) {
             val expression = expressionBuilder.appendKey(input)
@@ -24,7 +24,7 @@ class SimpleCalculatorImpl(
                 val formattedResult = formatter.formatOutput(rawResult)
                 return Output(
                     input = expressionBuilder.expressionString,
-                    result = "= $formattedResult"
+                    result = formattedResult
                 )
             }
         } else {
@@ -35,7 +35,7 @@ class SimpleCalculatorImpl(
                 expressionBuilder.expressionString = formattedResult
                 return Output(
                     input = expressionBuilder.expressionString,
-                    result = "= $formattedResult"
+                    result = formattedResult
                 )
             }
         }
