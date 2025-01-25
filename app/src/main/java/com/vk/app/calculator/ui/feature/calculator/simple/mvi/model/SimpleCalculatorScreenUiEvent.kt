@@ -5,5 +5,7 @@ import com.vk.app.calculator.ui.base.UiEvent
 
 sealed class SimpleCalculatorScreenUiEvent : UiEvent {
 
-    class KeyPress(val key: SimpleCalculatorKey) : SimpleCalculatorScreenUiEvent()
+    class InputKeyPress(val key: SimpleCalculatorKey) : SimpleCalculatorScreenUiEvent()
+
+    data object EqualsKeyPress : SimpleCalculatorScreenUiEvent()
 }

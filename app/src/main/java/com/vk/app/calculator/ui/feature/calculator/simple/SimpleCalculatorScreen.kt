@@ -26,7 +26,6 @@ import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.D
 import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Divide
 import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Dot
 import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Eight
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Equals
 import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Five
 import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Four
 import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Multiply
@@ -42,7 +41,7 @@ import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Z
 import com.vk.app.calculator.ui.components.HorizontalSpacer
 import com.vk.app.calculator.ui.components.KeyboardButton
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent
-import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.KeyPress
+import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiEvent.*
 import com.vk.app.calculator.ui.feature.calculator.simple.mvi.model.SimpleCalculatorScreenUiState
 import com.vk.app.calculator.ui.theme.CalculatorTheme
 
@@ -98,7 +97,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_ac,
                     contentDescription = "AC key",
-                    onClick = { uiEvent(KeyPress(Clear)) }
+                    onClick = { uiEvent(InputKeyPress(Clear)) }
                 )
                 KeyboardButton(
                     modifier = Modifier
@@ -106,7 +105,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_del,
                     contentDescription = "DEL key",
-                    onClick = { uiEvent(KeyPress(Del)) }
+                    onClick = { uiEvent(InputKeyPress(Del)) }
                 )
                 KeyboardButton(
                     modifier = Modifier
@@ -114,7 +113,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_percent,
                     contentDescription = "% key",
-                    onClick = { uiEvent(KeyPress(Percent)) }
+                    onClick = { uiEvent(InputKeyPress(Percent)) }
                 )
                 KeyboardButton(
                     modifier = Modifier
@@ -122,7 +121,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_divide,
                     contentDescription = "/ key",
-                    onClick = { uiEvent(KeyPress(Divide)) }
+                    onClick = { uiEvent(InputKeyPress(Divide)) }
                 )
             }
             Row(
@@ -137,7 +136,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_seven,
                     contentDescription = "7 key",
-                    onClick = { uiEvent(KeyPress(Seven)) }
+                    onClick = { uiEvent(InputKeyPress(Seven)) }
                 )
                 KeyboardButton(
                     modifier = Modifier
@@ -145,7 +144,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_eight,
                     contentDescription = "8 key",
-                    onClick = { uiEvent(KeyPress(Eight)) }
+                    onClick = { uiEvent(InputKeyPress(Eight)) }
                 )
                 KeyboardButton(
                     modifier = Modifier
@@ -153,7 +152,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_nine,
                     contentDescription = "9 key",
-                    onClick = { uiEvent(KeyPress(Nine)) }
+                    onClick = { uiEvent(InputKeyPress(Nine)) }
                 )
                 KeyboardButton(
                     modifier = Modifier
@@ -161,7 +160,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_multiply,
                     contentDescription = "* key",
-                    onClick = { uiEvent(KeyPress(Multiply)) }
+                    onClick = { uiEvent(InputKeyPress(Multiply)) }
                 )
             }
             Row(
@@ -176,7 +175,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_four,
                     contentDescription = "4 key",
-                    onClick = { uiEvent(KeyPress(Four)) }
+                    onClick = { uiEvent(InputKeyPress(Four)) }
                 )
                 KeyboardButton(
                     modifier = Modifier
@@ -184,7 +183,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_five,
                     contentDescription = "5 key",
-                    onClick = { uiEvent(KeyPress(Five)) }
+                    onClick = { uiEvent(InputKeyPress(Five)) }
                 )
                 KeyboardButton(
                     modifier = Modifier
@@ -192,7 +191,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_six,
                     contentDescription = "6 key",
-                    onClick = { uiEvent(KeyPress(Six)) }
+                    onClick = { uiEvent(InputKeyPress(Six)) }
                 )
                 KeyboardButton(
                     modifier = Modifier
@@ -200,7 +199,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_subtract,
                     contentDescription = "- key",
-                    onClick = { uiEvent(KeyPress(Subtract)) }
+                    onClick = { uiEvent(InputKeyPress(Subtract)) }
                 )
             }
             Row(
@@ -215,7 +214,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_one,
                     contentDescription = "1 key",
-                    onClick = { uiEvent(KeyPress(One)) }
+                    onClick = { uiEvent(InputKeyPress(One)) }
                 )
                 KeyboardButton(
                     modifier = Modifier
@@ -223,7 +222,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_two,
                     contentDescription = "2 key",
-                    onClick = { uiEvent(KeyPress(Two)) }
+                    onClick = { uiEvent(InputKeyPress(Two)) }
                 )
                 KeyboardButton(
                     modifier = Modifier
@@ -231,7 +230,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_three,
                     contentDescription = "3 key",
-                    onClick = { uiEvent(KeyPress(Three)) }
+                    onClick = { uiEvent(InputKeyPress(Three)) }
                 )
                 KeyboardButton(
                     modifier = Modifier
@@ -239,7 +238,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_add,
                     contentDescription = "+ key",
-                    onClick = { uiEvent(KeyPress(Add)) }
+                    onClick = { uiEvent(InputKeyPress(Add)) }
                 )
             }
             Row(
@@ -262,7 +261,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_zero,
                     contentDescription = "0 key",
-                    onClick = { uiEvent(KeyPress(Zero)) }
+                    onClick = { uiEvent(InputKeyPress(Zero)) }
                 )
                 KeyboardButton(
                     modifier = Modifier
@@ -270,7 +269,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_dot,
                     contentDescription = ". key",
-                    onClick = { uiEvent(KeyPress(Dot)) }
+                    onClick = { uiEvent(InputKeyPress(Dot)) }
                 )
                 KeyboardButton(
                     modifier = Modifier
@@ -278,7 +277,7 @@ fun SimpleCalculatorScreen(
                         .weight(1f),
                     vectorId = R.drawable.keypad_equals,
                     contentDescription = "= key",
-                    onClick = { uiEvent(KeyPress(Equals)) }
+                    onClick = { uiEvent(EqualsKeyPress) }
                 )
             }
         }

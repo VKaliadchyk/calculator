@@ -8,7 +8,6 @@ import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.D
 import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Divide
 import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Dot
 import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Eight
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Equals
 import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Five
 import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Four
 import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Multiply
@@ -53,8 +52,6 @@ class ExpressionBuilderImpl : ExpressionBuilder {
             Multiply,
             Divide,
             Percent -> appendOperator(key)
-
-            Equals -> { /* do nothing */ }
         }
 
         return expressionString

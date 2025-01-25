@@ -16,7 +16,7 @@ class SimpleCalculatorScreenReducer(initialVal: SimpleCalculatorScreenUiState) :
             is OutputUpdate -> {
                 oldState.copy(
                     equation = event.output.input,
-                    result = event.output.result
+                    result = event.output.result.value
                 )
             }
             is FinalizeCalculation -> {
@@ -26,7 +26,7 @@ class SimpleCalculatorScreenReducer(initialVal: SimpleCalculatorScreenUiState) :
                 history.add(historyEntry)
                 oldState.copy(
                     equation = event.output.input,
-                    result = event.output.result,
+                    result = event.output.result.value,
                     history = history
                 )
             }
