@@ -2,24 +2,24 @@ package com.vk.app.calculator.logic.calculator.simple.builder
 
 import com.vk.app.calculator.common.EMPTY_STRING
 import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Add
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Clear
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Del
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Divide
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Dot
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Eight
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Five
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Four
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Multiply
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Nine
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.One
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Percent
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Seven
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Six
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Subtract
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Three
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Two
-import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.Zero
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.ADD
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.CLEAR
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.BACKSPACE
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.DIVIDE
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.DECIMAL
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.EIGHT
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.FIVE
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.FOUR
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.MULTIPLY
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.NINE
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.ONE
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.PERCENT
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.SEVEN
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.SIX
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.SUBTRACT
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.THREE
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.TWO
+import com.vk.app.calculator.logic.calculator.simple.model.SimpleCalculatorKey.ZERO
 
 class ExpressionBuilderImpl : ExpressionBuilder {
 
@@ -27,31 +27,30 @@ class ExpressionBuilderImpl : ExpressionBuilder {
 
     override fun appendKey(key: SimpleCalculatorKey): String {
         when (key) {
-            Dot -> appendDot()
-            Del -> expressionString = expressionString.dropLast(1)
-            Clear -> expressionString = EMPTY_STRING
-            One -> expressionString += "1"
-            Two -> expressionString += "2"
-            Three -> expressionString += "3"
-            Four -> expressionString += "4"
-            Five -> expressionString += "5"
-            Six -> expressionString += "6"
-            Seven -> expressionString += "7"
-            Eight -> expressionString += "8"
-            Nine -> expressionString += "9"
-            Zero -> {
+            DECIMAL -> appendDot()
+            BACKSPACE -> expressionString = expressionString.dropLast(1)
+            CLEAR -> expressionString = EMPTY_STRING
+            ONE -> expressionString += "1"
+            TWO -> expressionString += "2"
+            THREE -> expressionString += "3"
+            FOUR -> expressionString += "4"
+            FIVE -> expressionString += "5"
+            SIX -> expressionString += "6"
+            SEVEN -> expressionString += "7"
+            EIGHT -> expressionString += "8"
+            NINE -> expressionString += "9"
+            ZERO -> {
                 if (expressionString == "0") {
                     // do nothing
                 } else {
                     expressionString += "0"
                 }
             }
-
-            Add,
-            Subtract,
-            Multiply,
-            Divide,
-            Percent -> appendOperator(key)
+            ADD,
+            SUBTRACT,
+            MULTIPLY,
+            DIVIDE,
+            PERCENT -> appendOperator(key)
         }
 
         return expressionString
@@ -89,10 +88,10 @@ class ExpressionBuilderImpl : ExpressionBuilder {
         }
 
         expressionString += when (input) {
-            Add -> "+"
-            Divide -> "/"
-            Subtract -> "-"
-            Multiply -> "*"
+            ADD -> "+"
+            DIVIDE -> "/"
+            SUBTRACT -> "-"
+            MULTIPLY -> "*"
             else -> throw NotImplementedError("Operation is not supported: $input")
         }
     }

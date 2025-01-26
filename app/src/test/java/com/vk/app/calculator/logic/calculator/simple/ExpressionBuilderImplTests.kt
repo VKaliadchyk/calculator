@@ -21,7 +21,7 @@ class ExpressionBuilderImplTests {
         builder.expressionString = "12.32+65"
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.Clear)
+        builder.appendKey(SimpleCalculatorKey.CLEAR)
 
         //THEN:
         val result = builder.expressionString
@@ -34,13 +34,13 @@ class ExpressionBuilderImplTests {
         builder.expressionString = "12.32+65"
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.Del)
-        builder.appendKey(SimpleCalculatorKey.Del)
-        builder.appendKey(SimpleCalculatorKey.Del)
-        builder.appendKey(SimpleCalculatorKey.Del)
-        builder.appendKey(SimpleCalculatorKey.Del)
-        builder.appendKey(SimpleCalculatorKey.Del)
-        builder.appendKey(SimpleCalculatorKey.Del)
+        builder.appendKey(SimpleCalculatorKey.BACKSPACE)
+        builder.appendKey(SimpleCalculatorKey.BACKSPACE)
+        builder.appendKey(SimpleCalculatorKey.BACKSPACE)
+        builder.appendKey(SimpleCalculatorKey.BACKSPACE)
+        builder.appendKey(SimpleCalculatorKey.BACKSPACE)
+        builder.appendKey(SimpleCalculatorKey.BACKSPACE)
+        builder.appendKey(SimpleCalculatorKey.BACKSPACE)
 
         //THEN:
         val result = builder.expressionString
@@ -53,12 +53,12 @@ class ExpressionBuilderImplTests {
         builder.expressionString = "12"
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.Dot)
-        builder.appendKey(SimpleCalculatorKey.One)
-        builder.appendKey(SimpleCalculatorKey.Two)
-        builder.appendKey(SimpleCalculatorKey.Dot)
-        builder.appendKey(SimpleCalculatorKey.Three)
-        builder.appendKey(SimpleCalculatorKey.Four)
+        builder.appendKey(SimpleCalculatorKey.DECIMAL)
+        builder.appendKey(SimpleCalculatorKey.ONE)
+        builder.appendKey(SimpleCalculatorKey.TWO)
+        builder.appendKey(SimpleCalculatorKey.DECIMAL)
+        builder.appendKey(SimpleCalculatorKey.THREE)
+        builder.appendKey(SimpleCalculatorKey.FOUR)
 
         //THEN:
         val result = builder.expressionString
@@ -71,13 +71,13 @@ class ExpressionBuilderImplTests {
         builder.expressionString = "2+4*1"
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.Zero)
-        builder.appendKey(SimpleCalculatorKey.Dot)
-        builder.appendKey(SimpleCalculatorKey.One)
-        builder.appendKey(SimpleCalculatorKey.Two)
-        builder.appendKey(SimpleCalculatorKey.Dot)
-        builder.appendKey(SimpleCalculatorKey.Three)
-        builder.appendKey(SimpleCalculatorKey.Four)
+        builder.appendKey(SimpleCalculatorKey.ZERO)
+        builder.appendKey(SimpleCalculatorKey.DECIMAL)
+        builder.appendKey(SimpleCalculatorKey.ONE)
+        builder.appendKey(SimpleCalculatorKey.TWO)
+        builder.appendKey(SimpleCalculatorKey.DECIMAL)
+        builder.appendKey(SimpleCalculatorKey.THREE)
+        builder.appendKey(SimpleCalculatorKey.FOUR)
 
         //THEN:
         val result = builder.expressionString
@@ -90,10 +90,10 @@ class ExpressionBuilderImplTests {
         builder.expressionString = "2*3+7"
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.Dot)
-        builder.appendKey(SimpleCalculatorKey.One)
-        builder.appendKey(SimpleCalculatorKey.Two)
-        builder.appendKey(SimpleCalculatorKey.Three)
+        builder.appendKey(SimpleCalculatorKey.DECIMAL)
+        builder.appendKey(SimpleCalculatorKey.ONE)
+        builder.appendKey(SimpleCalculatorKey.TWO)
+        builder.appendKey(SimpleCalculatorKey.THREE)
 
         //THEN:
         val result = builder.expressionString
@@ -106,7 +106,7 @@ class ExpressionBuilderImplTests {
         builder.expressionString = "1+"
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.Dot)
+        builder.appendKey(SimpleCalculatorKey.DECIMAL)
 
         //THEN:
         val result = builder.expressionString
@@ -119,7 +119,7 @@ class ExpressionBuilderImplTests {
         builder.expressionString = EMPTY_STRING
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.Dot)
+        builder.appendKey(SimpleCalculatorKey.DECIMAL)
 
         //THEN:
         val result = builder.expressionString
@@ -132,9 +132,9 @@ class ExpressionBuilderImplTests {
         builder.expressionString = "1"
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.Dot)
-        builder.appendKey(SimpleCalculatorKey.Dot)
-        builder.appendKey(SimpleCalculatorKey.Dot)
+        builder.appendKey(SimpleCalculatorKey.DECIMAL)
+        builder.appendKey(SimpleCalculatorKey.DECIMAL)
+        builder.appendKey(SimpleCalculatorKey.DECIMAL)
 
         //THEN:
         val result = builder.expressionString
@@ -147,7 +147,7 @@ class ExpressionBuilderImplTests {
         builder.expressionString = "4+2."
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.Multiply)
+        builder.appendKey(SimpleCalculatorKey.MULTIPLY)
 
         //THEN:
         val result = builder.expressionString
@@ -160,10 +160,10 @@ class ExpressionBuilderImplTests {
         builder.expressionString = "1+"
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.Subtract)
-        builder.appendKey(SimpleCalculatorKey.Add)
-        builder.appendKey(SimpleCalculatorKey.Multiply)
-        builder.appendKey(SimpleCalculatorKey.Divide)
+        builder.appendKey(SimpleCalculatorKey.SUBTRACT)
+        builder.appendKey(SimpleCalculatorKey.ADD)
+        builder.appendKey(SimpleCalculatorKey.MULTIPLY)
+        builder.appendKey(SimpleCalculatorKey.DIVIDE)
 
         //THEN:
         val result = builder.expressionString
@@ -176,8 +176,8 @@ class ExpressionBuilderImplTests {
         builder.expressionString = "1"
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.Add)
-        builder.appendKey(SimpleCalculatorKey.Add)
+        builder.appendKey(SimpleCalculatorKey.ADD)
+        builder.appendKey(SimpleCalculatorKey.ADD)
 
         //THEN:
         val result = builder.expressionString
@@ -190,7 +190,7 @@ class ExpressionBuilderImplTests {
         builder.expressionString = EMPTY_STRING
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.Add)
+        builder.appendKey(SimpleCalculatorKey.ADD)
 
         //THEN:
         val result = builder.expressionString
@@ -203,16 +203,16 @@ class ExpressionBuilderImplTests {
         builder.expressionString = EMPTY_STRING
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.One)
-        builder.appendKey(SimpleCalculatorKey.Two)
-        builder.appendKey(SimpleCalculatorKey.Three)
-        builder.appendKey(SimpleCalculatorKey.Four)
-        builder.appendKey(SimpleCalculatorKey.Five)
-        builder.appendKey(SimpleCalculatorKey.Six)
-        builder.appendKey(SimpleCalculatorKey.Seven)
-        builder.appendKey(SimpleCalculatorKey.Eight)
-        builder.appendKey(SimpleCalculatorKey.Nine)
-        builder.appendKey(SimpleCalculatorKey.Zero)
+        builder.appendKey(SimpleCalculatorKey.ONE)
+        builder.appendKey(SimpleCalculatorKey.TWO)
+        builder.appendKey(SimpleCalculatorKey.THREE)
+        builder.appendKey(SimpleCalculatorKey.FOUR)
+        builder.appendKey(SimpleCalculatorKey.FIVE)
+        builder.appendKey(SimpleCalculatorKey.SIX)
+        builder.appendKey(SimpleCalculatorKey.SEVEN)
+        builder.appendKey(SimpleCalculatorKey.EIGHT)
+        builder.appendKey(SimpleCalculatorKey.NINE)
+        builder.appendKey(SimpleCalculatorKey.ZERO)
 
         //THEN:
         val result = builder.expressionString
@@ -225,9 +225,9 @@ class ExpressionBuilderImplTests {
         builder.expressionString = "0"
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.Zero)
-        builder.appendKey(SimpleCalculatorKey.Zero)
-        builder.appendKey(SimpleCalculatorKey.Zero)
+        builder.appendKey(SimpleCalculatorKey.ZERO)
+        builder.appendKey(SimpleCalculatorKey.ZERO)
+        builder.appendKey(SimpleCalculatorKey.ZERO)
 
         //THEN:
         val result = builder.expressionString
@@ -240,9 +240,9 @@ class ExpressionBuilderImplTests {
         builder.expressionString = EMPTY_STRING
 
         //WHEN:
-        builder.appendKey(SimpleCalculatorKey.Two)
-        builder.appendKey(SimpleCalculatorKey.Add)
-        builder.appendKey(SimpleCalculatorKey.Three)
+        builder.appendKey(SimpleCalculatorKey.TWO)
+        builder.appendKey(SimpleCalculatorKey.ADD)
+        builder.appendKey(SimpleCalculatorKey.THREE)
 
         //THEN:
         val result = builder.expressionString
