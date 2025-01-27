@@ -60,7 +60,10 @@ fun SimpleCalculatorScreen(
                 .fillMaxWidth()
                 .padding(vertical = 8.dp)
         ) {
-            LazyColumn(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+                horizontalAlignment = Alignment.End
+            ) {
                 items(items = uiState.history) { item ->
                     Text(text = item)
                 }
